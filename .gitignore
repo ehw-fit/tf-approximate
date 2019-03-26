@@ -1,0 +1,11 @@
+.vscode
+__pycache__
+examples/cifar-10-data/*
+axqconv/axmult.cc
+axqconv/axmult.h
+axqconv/axmult.o
+axqconv/.tfconfig
+axqconv/axqconv.so
+axqconv/tables
+axqconv/tune
+axqconv/*.o
