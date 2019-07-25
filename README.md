@@ -3,7 +3,7 @@
 ## Overview
 This library extends TensorFlow library by **AxConv2D** layer that implements **QuantizedConv2D** layer with approximate multiplier. The approximate multipliers implemeted in C/C++ are stored in [axqcovn/axmult](axqconv/axmult) folder. The layers optionaly allow to use *weight tuning algorithm* that tries to modify weights of the layer to minimize mean arithmetic error of the multipliers.
 
-For more details see paper: [ArXiv ...](). If you use this library in your work, please use a following reference
+For more details see paper: [arXiv:1907.07229](https://arxiv.org/abs/1907.07229). If you use this library in your work, please use a following reference
 
     MRAZEK Vojtěch, VASICEK Zdenek, SEKANINA Lukas, HANIF Muhammad Abdullah and SHAFIQUE Muhammad. ALWANN: Automatic Layer-Wise Approximation of Deep Neural Network Accelerators without Retraining. To appear in ICCAD'19 2019.
 
@@ -14,7 +14,7 @@ For more details see paper: [ArXiv ...](). If you use this library in your work,
 	Network Accelerators without Retraining},
    pages = {8},
    year = {2019},,
-   booktite = {ICCAD'19 (to appear)}
+   booktitle = {ICCAD'19 (to appear)}
 }
 ```
 
