@@ -3,18 +3,23 @@
 ## Overview
 This library extends TensorFlow library by **AxConv2D** layer that implements **QuantizedConv2D** layer with approximate multiplier. The approximate multipliers implemeted in C/C++ are stored in [axqcovn/axmult](axqconv/axmult) folder. The layers optionaly allow to use *weight tuning algorithm* that tries to modify weights of the layer to minimize mean arithmetic error of the multipliers.
 
-For more details see paper: [arXiv:1907.07229](https://arxiv.org/abs/1907.07229). If you use this library in your work, please use a following reference
+For more details see paper: [10.1109/ICCAD45719.2019.8942068](https://dx.doi.org/10.1109/ICCAD45719.2019.8942068) or [arXiv:1907.07229](https://arxiv.org/abs/1907.07229) . If you use this library in your work, please use a following reference
 
-    MRAZEK Vojtěch, VASICEK Zdenek, SEKANINA Lukas, HANIF Muhammad Abdullah and SHAFIQUE Muhammad. ALWANN: Automatic Layer-Wise Approximation of Deep Neural Network Accelerators without Retraining. To appear in ICCAD'19 2019.
+    V. Mrazek, Z. Vasicek, L. Sekanina, M. A. Hanif and M. Shafique, "ALWANN: Automatic Layer-Wise Approximation of Deep Neural Network Accelerators without Retraining," 2019 IEEE/ACM International Conference on Computer-Aided Design (ICCAD), Westminster, CO, USA, 2019, pp. 1-8.
 
 ```bibtex
-@article {
-    author = {Vojtech Mrazek and Zdenek Vasicek and Lukas Sekanina and Muhammad Abdullah Hanif and Muhammad Shafique,
-   title = {ALWANN: Automatic Layer-Wise Approximation of Deep Neural
-	Network Accelerators without Retraining},
-   pages = {8},
-   year = {2019},,
-   booktitle = {ICCAD'19 (to appear)}
+@INPROCEEDINGS{8942068,
+    author={V. {Mrazek} and Z. {Vasicek} and L. {Sekanina} and M. A. {Hanif} and M. {Shafique}},
+    booktitle={2019 IEEE/ACM International Conference on Computer-Aided Design (ICCAD)},
+    title={ALWANN: Automatic Layer-Wise Approximation of Deep Neural Network Accelerators without Retraining},
+    year={2019},
+    volume={},
+    number={},
+    pages={1-8},
+    keywords={approximate computing;deep neural networks;computational path;ResNet;CIFAR-10},
+    doi={10.1109/ICCAD45719.2019.8942068},
+    ISSN={1933-7760},
+    month={Nov},
 }
 ```
 
