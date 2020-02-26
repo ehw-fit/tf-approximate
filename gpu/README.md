@@ -6,7 +6,7 @@ This library extends TensorFlow library by **ApproxConv2DWithMinMaxVars** layer 
 Although the TF layer **ApproxConv2DWithMinMaxVars** can be used directly we also provide Keras wrapper of the layer. The Keras wrapper **FakeApproxConv2D** ([python/keras/layers/fake_approx_convolutional.py](python/keras/layers/fake_approx_convolutional.py)) includes **FakeQuantWithMinMaxVars** to quantize the inputs. Both input and filter ranges (used for quantization) are computed for each batch independently.
 
 ## Usage
-The library is implemented as dynamically loaded plugin for TensorFlow. The library can be either downloaded as CUDA enabled Singularity container []() based on "tensorflow/tensorflow:latest-gpu-py3" image or built from sources
+The library is implemented as dynamically loaded plugin for TensorFlow. The library can be either downloaded as CUDA enabled Singularity container [tf-approximate-gpu.sif](https://ehw.fit.vutbr.cz/tf-approximate/tf-approximate-gpu.sif) based on "tensorflow/tensorflow:latest-gpu-py3" image or built from sources
 
 ```bash
 mkdir build
