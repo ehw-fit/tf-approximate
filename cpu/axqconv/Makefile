@@ -27,4 +27,4 @@ tables: tables.cc axmult.o approximate_selector.h
 	g++ -o $@ $(filter-out %.h, $^) 
 
 clean:
-	rm axmult.o tables tune axqconv.so axmult.h axmult.cc
+	rm axmult.o tables tune axqconv.so axmult.h axmult.cc tune.o .tfconfig

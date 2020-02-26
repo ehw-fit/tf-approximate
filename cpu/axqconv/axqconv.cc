@@ -42,7 +42,7 @@ limitations under the License.
 #include "tensorflow/core/framework/tensor.h"
 #include "tensorflow/core/framework/tensor_shape.h"
 #include "tensorflow/core/framework/tensor_slice.h"
-#include "tensorflow/core/kernels/bounds_check.h"
+#include "tensorflow/core/framework/bounds_check.h"
 //#include "conv_ops.h"
 #include "tensorflow/core/util/mirror_pad_mode.h"
 #include "tensorflow/core/util/padding.h"
@@ -237,6 +237,7 @@ class ReferenceAxConvFunctor {
                   assert(static_cast<int32>(filter_source_value) >= 0  );
                   assert(static_cast<int32>(filter_source_value) <= 255  );
 
+                  //std::cerr << static_cast<int32>(input_source_value) << " times " << static_cast<int32>(filter_source_value) << std::endl;
                   //int32 axm =  axtable[static_cast<int32>(input_source_value) * 256 + static_cast<int32>(filter_source_value)]; 
                   int32 axm =  approx_op_.multiplicate(static_cast<int32>(input_source_value), static_cast<int32>(filter_source_value));
 
