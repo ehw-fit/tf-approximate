@@ -31,7 +31,7 @@ def parse_cfile(cfiles):
     for proto, fn, _, _ in r_func.findall(alld):
         allfn.append(fn)
         out.append(proto + ";")
-    allfni = zip(range(len(allfn)), allfn)
+    allfni = list(zip(range(len(allfn)), allfn))
     
     out.append("")
     out.append("static int AxFindId(const char * fn) {")
