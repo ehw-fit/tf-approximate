@@ -5,7 +5,7 @@ This library extends TensorFlow library by **AxConv2D** layer that implements **
 
 For more details see paper: [10.1109/ICCAD45719.2019.8942068](https://dx.doi.org/10.1109/ICCAD45719.2019.8942068) or [arXiv:1907.07229](https://arxiv.org/abs/1907.07229) . If you use this library in your work, please use a following reference
 
-    V. Mrazek, Z. Vasicek, L. Sekanina, M. A. Hanif and M. Shafique, "ALWANN: Automatic Layer-Wise Approximation of Deep Neural Network Accelerators without Retraining," 2019 IEEE/ACM International Conference on Computer-Aided Design (ICCAD), Westminster, CO, USA, 2019, pp. 1-8.
+*V. Mrazek, Z. Vasicek, L. Sekanina, M. A. Hanif and M. Shafique, __"ALWANN: Automatic Layer-Wise Approximation of Deep Neural Network Accelerators without Retraining,"__ 2019 IEEE/ACM International Conference on Computer-Aided Design (ICCAD), Westminster, CO, USA, 2019, pp. 1-8.*
 
 ```bibtex
 @INPROCEEDINGS{8942068,
