@@ -1,0 +1,15 @@
+Bootstrap: docker
+From: tensorflow/tensorflow:latest-gpu-py3
+
+%files
+    @CONTAINER_BUILD_ROOT@/libApproxGPUOpsTF.so /opt/tf-approximate-gpu/
+    @CONTAINER_SRC_ROOT@/python/keras/layers/fake_approx_convolutional.py /opt/tf-approximate-gpu/python/keras/layers/
+    @CONTAINER_SRC_ROOT@/test/test_table_approx_conv_2d.py /opt/tf-approximate-gpu/test/
+    @CONTAINER_SRC_ROOT@/test/test_mul_table.bin /opt/tf-approximate-gpu/test/
+
+%environment
+    export PYTHONPATH=$PYTHONPATH:/opt/tf-approximate-gpu/python
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/tf-approximate-gpu
+
+%post
+    pip install pillow

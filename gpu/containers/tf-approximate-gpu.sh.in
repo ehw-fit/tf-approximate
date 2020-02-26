@@ -1,0 +1,7 @@
+#!/bin/bash
+apt update
+apt -y install cmake
+cd /opt/tf-approximate-gpu_build/tf-approximate-gpu
+cmake /opt/tf-approximate-gpu
+make
+chown -R @CONTAINER_USER_ID@:@CONTAINER_GROUP_ID@ .
