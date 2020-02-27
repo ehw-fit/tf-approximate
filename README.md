@@ -3,7 +3,7 @@
 ## Overview
 This library extends TensorFlow library providing Approximate Convolutional (ApproxConv) layers, i.e. layers with reduced precision (typically 8 bits) implemented using approximate circuits (multipliers). The proposed layer enables to specify via parameter which approximate multiplier should be used (e.g. a multiplier from the [EvoApproxLib](//github.com/ehw-fit/evoapproxlib)). To maximize the throughput, the layer expects availability of a model of approximate multiplier in form of a Truth Table.
 
-
+The usage of the approximate components in convolutional neural networks enables to reduce the complexity of CNNs/DNNs when implemented in HW. This problem is discussed, e.g. in [ICCAD 2016](https://www.fit.vut.cz/research/publication-file/11142/iccad_nn.pdf) or [arXiv:2002.09481](https://arxiv.org/abs/2002.09481).
 
 ## Accelerated version (TensorFlow 2, GPU, optionally CPU)
 This library extends TensorFlow library by ApproxConv2DWithMinMaxVars layer that implements Conv2D with approximate multiplier. The layer is intended to be used together with FakeQuantWithMinMaxVars layers (on inputs) to experiment with approximate/quantized convolutions in FP32 CNNs. The code can be executed on GPU or CPU but it is recommended to use a GPU to maximize the throughput. 
