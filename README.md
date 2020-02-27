@@ -1,9 +1,38 @@
 # TensorFlow Approximate Layers
 
 ## Overview
-This library extends TensorFlow library by appoximate convolutional layers. The approximation is introduced by employing arbitrary approximate multuiplier (e.g. from the EvoApproxLib library of approximate components).
+This library extends TensorFlow library by appoximate convolutional layers. The approximation is introduced by employing arbitrary approximate multuiplier (e.g. from the [EvoApproxLib](//github.com/ehw-fit/evoapproxlib) library of approximate components).
 
-## CPU version
+
+
+## Accelerated version (GPU + TensorFlow 2)
+This library extends TensorFlow library by ApproxConv2DWithMinMaxVars layer that implements Conv2D with approximate multiplier. The layer is intended to be used together with FakeQuantWithMinMaxVars layers (on inputs) to experiment with approximate/quantized convolutions in FP32 CNNs.
+
+
+![Application overview](overview.png)
+
+This is the most recent version of the approximate layers for TensorFlow. This implementation provides 200x speedup w.r.t. previous version. We published the source codes as well as *docker or singularity container* with pre-build TensorFlow and the libraries for NVIDIA GPUs. The source codes and application examples are given in the [tf2/README.md](README) file. For more details please follow paper [arXiv:2002.09481](https://arxiv.org/abs/2002.09481)
+
+
+*F. Vaverka, V. Mrazek, Z. Vasicek and L. Sekanina. __"TFApprox: Towards a Fast Emulation of DNN Approximate Hardware Accelerators on GPU"__. 2020 Design, Automation and Test in Europe Conference (DATE), Grenoble, FR, 2020.*
+
+
+```bibtex
+@INPROCEEDINGS{8942068,
+    author={F. {Vaverka} and V. {Mrazek} and Z. {Vasicek} and L. {Sekanina} and M. A. {Hanif} and M. {Shafique}},
+    booktitle={2020 Design, Automation and Test in Europe Conference (DATE)},
+    title={TFApprox: Towards a Fast Emulation of DNN Approximate Hardware Accelerators on GPU},
+    year={2020},
+    volume={},
+    number={},
+    pages={4},
+}
+```
+
+
+
+
+## CPU only version (unaccelerated; TensorFlow 1.14)
 This repository provides two versions of the approximate layers. The first is based on a simple CPU implementation from the TensorFlow library and is located in [CPU](cpu) folder. In this version, a **AxConv2D** layer is implemented, that extends **QuantizedConv2D** layer with approximate multiplier. The application examples are given in the [cpu/README.md](README) file.
 
 For more details see paper: [10.1109/ICCAD45719.2019.8942068](https://dx.doi.org/10.1109/ICCAD45719.2019.8942068) or [arXiv:1907.07229](https://arxiv.org/abs/1907.07229) . If you use this library in your work, please use a following reference
@@ -25,26 +54,6 @@ For more details see paper: [10.1109/ICCAD45719.2019.8942068](https://dx.doi.org
     month={Nov},
 }
 ```
-
-## GPU version
-Since the CPU version uses a basic implementation of the convolution, it is not very effective. However, this version was reimplemented in order to achieve a performance of the inference more comparable to the accurate implementation (200x speedup w.r.t. CPU version). The source codes and application examples are given in the [gpu/README.md](README) file. For more details please follow paper [arXiv:2002.09481](https://arxiv.org/abs/2002.09481)
-
-
-*F. Vaverka, V. Mrazek, Z. Vasicek and L. Sekanina. __"TFApprox: Towards a Fast Emulation of DNN Approximate Hardware Accelerators on GPU"__. 2020 Design, Automation and Test in Europe Conference (DATE), Grenoble, FR, 2020.*
-
-
-```bibtex
-@INPROCEEDINGS{8942068,
-    author={F. {Vaverka} and V. {Mrazek} and Z. {Vasicek} and L. {Sekanina} and M. A. {Hanif} and M. {Shafique}},
-    booktitle={2020 Design, Automation and Test in Europe Conference (DATE)},
-    title={TFApprox: Towards a Fast Emulation of DNN Approximate Hardware Accelerators on GPU},
-    year={2020},
-    volume={},
-    number={},
-    pages={4},
-}
-```
-
 
 ## Speed comparison
 ![Speed comparison](gpu_speedup.png)
