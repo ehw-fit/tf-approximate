@@ -1,7 +1,7 @@
 # TensorFlow Approximate Layers
 
 ## Overview
-This library extends TensorFlow library providing Approximate Convolutional (ApproxConv) layers, i.e. layers with reduced precision (typically 8 bits) implemented using approximate circuits (multipliers). The proposed layer enables to specify via parameter which approximate multiplier should be used (e.g. a multipliers from the [EvoApproxLib](//github.com/ehw-fit/evoapproxlib). To maximize the throughput, the layer expects availability of a model in form of a Truth Table.
+This library extends TensorFlow library providing Approximate Convolutional (ApproxConv) layers, i.e. layers with reduced precision (typically 8 bits) implemented using approximate circuits (multipliers). The proposed layer enables to specify via parameter which approximate multiplier should be used (e.g. a multipliers from the [EvoApproxLib](//github.com/ehw-fit/evoapproxlib)). To maximize the throughput, the layer expects availability of a model in form of a Truth Table.
 
 
 
