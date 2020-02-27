@@ -1,17 +1,17 @@
 # TensorFlow Approximate Layers
 
 ## Overview
-This library extends TensorFlow library by appoximate convolutional layers. The approximation is introduced by employing arbitrary approximate multuiplier (e.g. from the [EvoApproxLib](//github.com/ehw-fit/evoapproxlib) library of approximate components).
+This library extends TensorFlow library providing Approximate Convolutional (ApproxConv) layers, i.e. layers with reduced precision (typically 8 bits) implemented using approximate circuits (multipliers). The proposed layer enables to specify via parameter which approximate multiplier should be used (e.g. a multipliers from the [EvoApproxLib](//github.com/ehw-fit/evoapproxlib). To maximize the throughput, the layer expects availability of a model in form of a Truth Table.
 
 
 
-## Accelerated version (GPU + TensorFlow 2)
-This library extends TensorFlow library by ApproxConv2DWithMinMaxVars layer that implements Conv2D with approximate multiplier. The layer is intended to be used together with FakeQuantWithMinMaxVars layers (on inputs) to experiment with approximate/quantized convolutions in FP32 CNNs.
+## Accelerated version (TensorFlow 2, GPU, optionally CPU)
+This library extends TensorFlow library by ApproxConv2DWithMinMaxVars layer that implements Conv2D with approximate multiplier. The layer is intended to be used together with FakeQuantWithMinMaxVars layers (on inputs) to experiment with approximate/quantized convolutions in FP32 CNNs. The code can be executed on GPU or CPU but it is recommended to use a GPU to maximize the throughput. 
 
 
 ![Application overview](overview.png)
 
-This is the most recent version of the approximate layers for TensorFlow. This implementation provides 200x speedup w.r.t. previous version. We published the source codes as well as *docker or singularity container* with pre-build TensorFlow and the libraries for NVIDIA GPUs. The source codes and application examples are given in the [tf2/README.md](README) file. For more details please follow paper [arXiv:2002.09481](https://arxiv.org/abs/2002.09481)
+This is the most recent version of the approximate layers for TensorFlow. This implementation provides ~ 200x speedup with respect to the previous CPU-based version. We published the source codes as well as *docker or singularity container* with pre-build TensorFlow and the libraries for NVIDIA GPUs. The source codes and application examples are given in the [tf2/README.md](README) file. For more details please follow paper [arXiv:2002.09481](https://arxiv.org/abs/2002.09481)
 
 
 *F. Vaverka, V. Mrazek, Z. Vasicek and L. Sekanina. __"TFApprox: Towards a Fast Emulation of DNN Approximate Hardware Accelerators on GPU"__. 2020 Design, Automation and Test in Europe Conference (DATE), Grenoble, FR, 2020.*
@@ -32,7 +32,7 @@ This is the most recent version of the approximate layers for TensorFlow. This i
 
 
 
-## CPU only version (unaccelerated; TensorFlow 1.14)
+## Basic implementation (TensorFlow 1.14, CPU only)
 This repository provides two versions of the approximate layers. The first is based on a simple CPU implementation from the TensorFlow library and is located in [CPU](cpu) folder. In this version, a **AxConv2D** layer is implemented, that extends **QuantizedConv2D** layer with approximate multiplier. The application examples are given in the [cpu/README.md](README) file.
 
 For more details see paper: [10.1109/ICCAD45719.2019.8942068](https://dx.doi.org/10.1109/ICCAD45719.2019.8942068) or [arXiv:1907.07229](https://arxiv.org/abs/1907.07229) . If you use this library in your work, please use a following reference
