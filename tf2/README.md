@@ -5,26 +5,9 @@ This library extends TensorFlow library by **ApproxConv2DWithMinMaxVars** layer 
 
 Although the TF layer **ApproxConv2DWithMinMaxVars** can be used directly we also provide Keras wrapper of the layer. The Keras wrapper **FakeApproxConv2D** ([python/keras/layers/fake_approx_convolutional.py](python/keras/layers/fake_approx_convolutional.py)) includes **FakeQuantWithMinMaxVars** to quantize the inputs. Both input and filter ranges (used for quantization) are computed for each batch independently.
 
-## Usage
-The library is implemented as dynamically loaded plugin for TensorFlow. The library can be either downloaded as CUDA enabled Singularity container [tf-approximate-gpu.sif](https://ehw.fit.vutbr.cz/tf-approximate/tf-approximate-gpu.sif) based on "tensorflow/tensorflow:latest-gpu-py3" image or built from sources
+![GPU version overview](../overview.png)
 
-```bash
-mkdir build
-cd build
-cmake ..
-make
-```
-
-The prerequisites to build the library is working installation of CUDA SDK (10.0+) and TensorFlow (2.1.0+) with GPU (CUDA) support enabled. The build system provides switch to disable CUDA support, which causes the layer to fallback to **SLOW** CPU implementation: cmake -DTFAPPROX_ALLOW_GPU_CONV=OFF ..
-
-Finally built library can be used as
-```python
-import tensorflow as tf
-approx_op_module = tf.load_op_library('libApproxGPUOpsTF.so')
-```
-
-## Example
-### Using singularity container
+## Pre-build singularity container
 You can use a [Singularity](https://singularity.lbl.gov/) container (for installation Debian/Ubuntu systems run `sudo apt install singularity-container` command).
 
 As a first step download the container
@@ -48,7 +31,7 @@ python /opt/tf-approximate-gpu/test/test_table_approx_conv_2d.py
 Your container is prepared and you are able to run your own script inside it.
 
 
-### Approximation of accurate neural network
+## Example: Approximation of accurate neural network
 An example provided in [examples](examples) shows usage of Keras layer **FakeApproxConv2D**, which allows to simulate convolution using approximate 8x8 bit multiplier defined as arbitrary binary table.
 
 The first step is to train the network defined using Keras layer (with accurate FP32 operations) as usual and store resulting weights to the file `lenet5_weights`:
@@ -94,4 +77,25 @@ A script with approximating neural network trained by [examples/fake_approx_trai
 python examples/fake_approx_eval.py --mtab_file examples/axmul_8x8/mul8u_L40.bin
 ```
 Leaving the argument "mtab_file" (multiplication table file) out will cause **FakeApproxConv2D** layers to use accurate 8x8 bit multiplication.
+
+
+
+## Building from source
+The library is implemented as dynamically loaded plugin for TensorFlow. The library can be either downloaded as CUDA enabled Singularity container [tf-approximate-gpu.sif](https://ehw.fit.vutbr.cz/tf-approximate/tf-approximate-gpu.sif) based on "tensorflow/tensorflow:latest-gpu-py3" image or built from sources
+
+```bash
+mkdir build
+cd build
+cmake ..
+make
+```
+
+The prerequisites to build the library is working installation of CUDA SDK (10.0+) and TensorFlow (2.1.0+) with GPU (CUDA) support enabled. The build system provides switch to disable CUDA support, which causes the layer to fallback to **SLOW** CPU implementation: `cmake -DTFAPPROX_ALLOW_GPU_CONV=OFF ..`
+
+Finally built library can be used as
+```python
+import tensorflow as tf
+approx_op_module = tf.load_op_library('libApproxGPUOpsTF.so')
+```
+
 
