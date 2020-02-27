@@ -29,8 +29,9 @@ This is the most recent version of the approximate layers for TensorFlow. This i
 }
 ```
 
-
-
+### Performance of the accelerated version
+![Speed comparison](gpu_speedup.png)
+Note that the evaluation was performed on Intel Xeon E5-2620 CPU equipped with NVIDIA GTX 1080 CPU, TensorFlow 1.X, and NVIDIA CUDA Toolkit 10.1.
 
 ## Basic implementation (TensorFlow 1.14, CPU only)
 This repository provides two versions of the approximate layers. The first is based on a simple CPU implementation from the TensorFlow library and is located in [CPU](cpu) folder. In this version, a **AxConv2D** layer is implemented, that extends **QuantizedConv2D** layer with approximate multiplier. The application examples are given in the [cpu/README.md](README) file.
@@ -55,5 +56,3 @@ For more details see paper: [10.1109/ICCAD45719.2019.8942068](https://dx.doi.org
 }
 ```
 
-## Speed comparison
-![Speed comparison](gpu_speedup.png)
