@@ -8,11 +8,14 @@ Although the TF layer **ApproxConv2DWithMinMaxVars** can be used directly we als
 ![GPU version overview](../overview.png)
 
 ## Pre-build singularity container
-You can use a [Singularity](https://singularity.lbl.gov/) container (for installation Debian/Ubuntu systems run `sudo apt install singularity-container` command).
+You can use a [Singularity](https://singularity.lbl.gov/) container (for installation Debian/Ubuntu systems run `sudo apt install singularity-container` command). Note that version 3.0 is needed at least!
 
 As a first step download the container
    
     singularity pull https://ehw.fit.vutbr.cz/tf-approximate/tf-approximate-gpu.sif
+    # or wget command can be used
+    wget https://ehw.fit.vutbr.cz/tf-approximate/tf-approximate-gpu.sif
+    # or just download the file using web browser
     
 Then, you can run the container on your machine. We recommend to use *-H* command to override the Python packages you may have installed in your $HOME folder and *--bind* parameter to bind the folder you are working in.
 
