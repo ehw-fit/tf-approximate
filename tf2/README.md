@@ -101,4 +101,17 @@ import tensorflow as tf
 approx_op_module = tf.load_op_library('libApproxGPUOpsTF.so')
 ```
 
+## Approximation by your own multiplier
+You can follow the examples. Only one thing to change is generation of a new __bin__ file. It can be generated in C/C++ as follows
+```c
+FILE * f = fopen("output.bin", "wb");
 
+for(unsigned int a = 0; a < 256; a++)
+    for(unsigned int b = 0; b < 256; b++) {
+      uint16_t val = approximate_mult(a, b); // replace by your own function call
+      fwrite(&val, sizeof(uint16_t), 1, f);
+    }
+
+fclose(f);
+```
+while `approximate_mult` is you approximate multiplication code in C. To check the validity of the packing function you can also check if accurate multiplier produces exactly same file as [examples/axmul_8x8/mul8u_1JFF.bin](examples/axmul_8x8/mul8u_1JFF.bin)
