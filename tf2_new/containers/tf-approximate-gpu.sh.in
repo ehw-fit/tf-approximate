@@ -1,0 +1,14 @@
+#!/bin/bash
+apt update
+# apt -y install cmake
+
+apt -y install wget
+mkdir /tmp/cmake && cd /tmp/cmake
+wget https://cmake.org/files/v3.15/cmake-3.15.2-Linux-x86_64.sh 
+mkdir /opt/cmake
+sh cmake-3.15.2-Linux-x86_64.sh --skip-license --prefix=/opt/cmake
+ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake
+
+cd /opt/tf-approximate-gpu-build/tf-approximate-gpu
+cmake @CONTAINER_PASS_VARS@ /opt/tf-approximate-gpu && make && touch .build_done
+chown -R @CONTAINER_USER_ID@:@CONTAINER_GROUP_ID@ .

@@ -1,0 +1,9 @@
+Bootstrap: docker
+From: @CONTAINER_DIST_IMAGE@
+
+%files
+@CONTAINER_FILE_LIST@
+%environment
+@CONTAINER_ENV_LIST@
+%post
+    pip install pillow

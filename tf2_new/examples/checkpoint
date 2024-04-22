@@ -1,0 +1,2 @@
+model_checkpoint_path: "lenet5_weights"
+all_model_checkpoint_paths: "lenet5_weights"
